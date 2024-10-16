@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrado de Manifiestos</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Filtrar Manifiestos</h1>
+    </header>
+
+    <div id="fileModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeModal" class="close">X</span>
+            <h2>Cargar Archivos</h2>
+            <div>
+                <label for="manifiestosInput" class="btn1">Seleccionar carpeta de PDFs:</label>
+                <input type="file" id="manifiestosInput" multiple webkitdirectory accept=".pdf" />
+            </div>
+            <div>
+                <label for="inputFile" class="btn2">Seleccionar archivo Excel:</label>
+                <input class="inputfile inputfile-1" type="file" id="inputFile" accept=".xlsx, .xls" />
+            </div>
+            <div class="modal-footer">
+                <button id="acceptFiles" class="modal-btn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <form id="filterForm">
+        <div class="filters">
+            <div class="form-group">
+                <label for="proveedor">Proveedor</label>
+                <select id="proveedor" class="information-input">
+                    <option value="" disabled selected>Selecciona un Proveedor</option>
+                    <option value="COMERCIAL TONKIN S.A.S">COMERCIAL TONKIN S.A.S</option>
+                    <option value="EL FARO LTDA">EL FARO LTDA</option>
+                    <option value="INVERSIONES DIOMARDI S.A.S">INVERSIONES DIOMARDI S.A.S</option>
+                    <option value="JO SAS">JO SAS</option>
+                    <option value="NEXT TECHNOLOGY">NEXT TECHNOLOGY</option>
+                    <option value="NIATEC">NIATEC</option>
+                    <option value="REDICOL">REDICOL</option>
+                    <option value="REDICOL SAS">REDICOL SAS</option>
+                    <option value="TITAN">TITAN</option>
+                    <option value="TODO FIESTAS CALI ">TODO FIESTAS CALI</option>
+                    <option value="TOY PARK">TOY PARK</option>
+                    <option value="TOYPARK">TOYPARK</option>
+                    <option value="VIA TROPICAL">VIA TROPICAL</option>
+                </select>
+                <button type="button" id="clearProveedor" class="clear" style="display: none;">X</button>
+            </div>
+            <div class="form-group">
+                <label for="internalReference">Referencia Interna</label>
+                <input class="information-input" type="text" id="internalReference" placeholder="Ingrese la referencia interna">
+                <button type="button" id="clearInternalReference" class="clear2" style="display: none;">X</button>
+            </div>
+            <div class="form-group">
+                <label for="bill">Factura</label>
+                <input class="information-input" type="text" id="bill" placeholder="Ingrese la factura">
+                <button type="button" id="clearBill" class="clear3" style="display: none;">X</button>
+            </div>
+        </div>
+        <div class="searchBtn">
+            <button class="search" type="submit">Buscar</button>
+        </div>
+    </form>
+
+    <button id="openModal" class="open-modal-btn">Cargar Archivos</button>
+
+    <div class="results">
+        <h2>Resultados</h2>
+        <table id="resultsTable" class="styled-table">
+            <thead>
+                <tr id="tableHeader">
+                    <th> # Factura</th>
+                    <th>Manifiestos</th>
+                    <th>Orden de Pedido</th>
+                    <th>Proveedores</th>
+                    <th>Referencia Interna</th>
+                    <th>Ref de Proveedores</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div id="loading" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="./logica.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</body>
+</html>
